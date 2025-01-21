@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" href="taskform.css">
+</head>
+<body>
+<div class="all">
+    <div class="head">
+      <h1> ✔️Create New Relationship</h1>
+    </div>
+    <div class="main">
+        <form id="r1" action="url_or_script" method="post">
+            <label for="country">Country</label>
+            <select name="box" id="country">
+                 <option value="">Select</option>
+                 <option value="USA">United Kingdom</option>
+                 <option value="CAN">Canada</option>
+                 <option value="IND">India</option>
+                 <option value="TL">ThaiLand</option>
+                 <option value="CHINA">China</option>
+                 <option value="SA">South Africa</option>
+           </select>
+           <br><br>
+
+           <label for="customername" >Coustomer Name<p class="star">&nbsp;*</p></label>
+           <input type="text" id="customername">
+           <div id="customernameerror" class="error-message"></div><br><br>
+
+           <label for="contactperson">Contact Person</label>
+           <input type="text" id="contactperson">
+           
+           
+         
+
+           
+           <label for="designation" class="eee" id="sam">Designation</label>
+           <input type="text" id="designation">
+     <br><br>
+
+
+           <label for="Primaryemail">Primary Email<p class="star">&nbsp;*</p></label>
+           <input type="email" id="email">
+           <div id="emailerror" class="error-message"></div><br><br>
+
+           <label for="directno">Direct No</label>
+           <input type="text" id="directno">
+
+                     
+          
+           <label for="companytype" class="eee" id="com">Company Type</label>
+        
+           <select name="box" id="companytype">
+            <option value="">Select</option>
+            <option value="">abcdefg</option>
+            <option value="">abcdefg</option>
+            <option value="">abcdefg</option>
+            <option value="">abdefgc</option>
+            <option value="">abcdefg</option>
+          </select><br><br>
+          
+
+           <label for="boardno">Board No</label>
+           <input type="text" id="boardno">
+            
+          
+                     
+           
+           <label for="address" class="eee" id="dam">Address</label>
+           <textarea id="address"></textarea> <br><br>
+        
+
+           <label for="mobileno">Mobile No<p class="star">&nbsp;*</p></label>
+           <input type="text" id="mobileno">
+           <div id="mobilenoerror" class="error-message"></div> <br><br>
+
+            <label for="technology">Technology</label>
+           <input type="text" id="technology"><br><br> 
+
+           <label for="skypeid">Skype ID</label>
+           <input type="text" id="skypeid"><br><br>
+
+           <label for="weburl">Web URL</label>
+           <input type="text" id="weburl"><br><br>
+
+           <label for="service">Service</label>
+    
+           </select><select name="box" id="service">
+                 <option value="">Select</option>
+                 <option value="">abcdefg</option>
+                 <option value="">abcdefg</option>
+                 <option value="">abcdefg</option>
+                 <option value="">abcdefg</option>
+                 <option value="">abcdefg</option>
+            </select>
+            <br><br>
+            <table>
+               <tr><td>
+            Track Detail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<td>
+           <textarea id="trackdetail"></textarea><br><br>
+           </td></tr></table><br><br>
+      
+
+           <label for="priority">Priority</label>
+           <select name="box" id="priority">
+                <option value="">Select</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+          </select>
+   
+          
+          <label for="callreference" class="uuu" id="yam">Call Reference</label>
+    
+          <select name="box" class="callreference">
+                <option value="">Select</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+            </select><br><br>
+
+            <label for="hiremode">Hire Mode</label>
+          <select name="box" id="hiremode">
+                <option value="">Select option</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+                <option value="">abcdefg</option>
+            </select><br><br>
+
+            
+            <input type="checkbox" id="followup">&nbsp;&nbsp;its all filled by my knowledge
+            <div id="followuperror" class="checkerror"></div>
+
+          
+        <br>
+        <button class="btn" type="button" id="sub" onclick="validateForm()">Build New Relationship</button>
+
+    </form>
+    </div><br>
+    <div id="userInfo" class="user-info">
+        
+    </div>
+    <script>
+        function validateForm() {
+            var isValid = true;
+            var firstInvalidElement = null;
+
+            var errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(function(element) {
+                element.textContent = '';
+            });
+
+            var requiredFields = ['customername', 'email', 'mobileno'];
+            requiredFields.forEach(function(field) {
+                var element = document.getElementById(field);
+                if (element.value.trim() === '') {
+                    element.classList.add('error');
+                    document.getElementById(field + 'error').textContent = 'Please enter ' + field.replace(/([A-Z])/g, ' $1').toLowerCase() + '.';
+                    isValid = false;
+                    if (!firstInvalidElement) firstInvalidElement = element;
+                } else {
+                    element.classList.remove('error');
+                }
+            });
+
+            var emailElement = document.getElementById('email');
+            var emailError = document.getElementById('emailerror');
+            var emailValue = emailElement.value.trim();
+            if (emailValue === '') {
+                emailElement.classList.add('error');
+                emailError.textContent = 'Please enter your email address.';
+                isValid = false;
+                if (!firstInvalidElement) firstInvalidElement = emailElement;
+            } else if (!emailValue.includes('@') || !emailValue.includes('.')) {
+                emailElement.classList.add('error');
+                emailError.textContent = 'Please enter a valid email address containing "@" and a domain.';
+                isValid = false;
+                if (!firstInvalidElement) firstInvalidElement = emailElement;
+            } else {
+                emailElement.classList.remove('error');
+            }
+
+            var mobileElement = document.getElementById('mobileno');
+            var mobileError = document.getElementById('mobilenoerror');
+            var mobileValue = mobileElement.value.trim();
+            if (mobileValue === '') {
+                mobileElement.classList.add('error');
+                mobileError.textContent = 'Please enter your mobile number.';
+                isValid = false;
+                if (!firstInvalidElement) firstInvalidElement = mobileElement;
+            } else if (!/^\d{10}$/.test(mobileValue)) {
+                mobileElement.classList.add('error');
+                mobileError.textContent = 'Please enter a valid 10-digit mobile number.';
+                isValid = false;
+                if (!firstInvalidElement) firstInvalidElement = mobileElement;
+            } else {
+                mobileElement.classList.remove('error');
+            }
+
+            var followupCheckbox = document.getElementById('followup');
+            var followupError = document.getElementById('followuperror');
+            if (!followupCheckbox.checked) {
+                followupError.textContent = 'Please check the box for further process.';
+                isValid = false;
+            } else {
+                followupError.textContent = '';
+            }
+
+            if (isValid) {
+                var userInfoDisplay = document.getElementById('userInfo');
+                if (userInfoDisplay) {
+                    userInfoDisplay.innerHTML =
+                        '<strong>Country:</strong> ' + (document.getElementById('country') ? (document.getElementById('country').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Customer Name:</strong> ' + (document.getElementById('customername') ? (document.getElementById('customername').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Contact Person:</strong> ' + (document.getElementById('contactperson') ? (document.getElementById('contactperson').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Designation:</strong> ' + (document.getElementById('designation') ? (document.getElementById('designation').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Primary Email:</strong> ' + (document.getElementById('email') ? (document.getElementById('email').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Direct No:</strong> ' + (document.getElementById('directno') ? (document.getElementById('directno').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Company Type:</strong> ' + (document.getElementById('companytype') ? (document.getElementById('companytype').value || '-----------') : '') + '<br>' +
+                        '<strong>Board No:</strong> ' + (document.getElementById('boardno') ? (document.getElementById('boardno').value || '-----------') :'-----------') + '<br>' +
+                        '<strong>Address:</strong> ' + (document.getElementById('address') ? (document.getElementById('address').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Mobile No:</strong> ' + (document.getElementById('mobileno') ? (document.getElementById('mobileno').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Technology:</strong> ' + (document.getElementById('technology') ? (document.getElementById('technology').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Skype ID:</strong> ' + (document.getElementById('skypeid') ? (document.getElementById('skypeid').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Web URL:</strong> ' + (document.getElementById('weburl') ? (document.getElementById('weburl').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Service:</strong> ' + (document.getElementById('service') ? (document.getElementById('service').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Track Detail:</strong> ' + (document.getElementById('trackdetail') ? (document.getElementById('trackdetail').value || '-----------') : '') + '<br>' +
+                        '<strong>Priority:</strong> ' + (document.getElementById('priority') ? (document.getElementById('priority').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Call Reference:</strong> ' + (document.getElementById('callreference') ? (document.getElementById('callreference').value || '-----------') : '-----------') + '<br>' +
+                        '<strong>Hire Mode:</strong> ' + (document.getElementById('hiremode') ? (document.getElementById('hiremode').value || '-----------') : '-----------') + '<br>';
+                }
+
+                var formElements = document.querySelectorAll('#r1 input, #r1 select, #r1 textarea');
+                formElements.forEach(function(element) {
+                    element.disabled = true;
+                });
+
+                return true;
+            } else if (firstInvalidElement) {
+                // Scroll to the first invalid element
+                firstInvalidElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return false;
+            }
+        }
+
+        </script>
+        </body>
+        </html>
